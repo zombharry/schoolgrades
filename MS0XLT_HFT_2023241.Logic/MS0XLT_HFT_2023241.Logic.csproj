@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MS0XLT_HFT_2023241.Models\MS0XLT_HFT_2023241.Models.csproj" />
+    <ProjectReference Include="..\MS0XLT_HFT_2023241.Repository\MS0XLT_HFT_2023241.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
