@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MS0XLT_HFT_2023241.Models
 {
-    public class Reservation
+    public class Exam
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

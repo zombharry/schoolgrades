@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MS0XLT_HFT_2023241.Models
 {
-    public class Room
+    public class Subject
     {
     }
 }
