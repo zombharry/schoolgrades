@@ -12,11 +12,15 @@ namespace MS0XLT_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ReservationId { get; set; }
+        public int ExamId { get; set; }
 
         [Required]
-        public int RoomId { get; set; }
+        public int SubjectId { get; set; }
 
-        public int Day { get; set; }
+        public int StudentId { get; set; }
+
+        public int Grade { get; set; }
+
+       
     }
 }
