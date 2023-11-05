@@ -14,7 +14,10 @@ namespace MS0XLT_HFT_2023241.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SubjectId { get; set; }
 
+        [StringLength(50)]
         public string SubjectName { get; set; }
         public int Credit { get; set; }
+
+        public virtual ICollection<Grade> Grades { get; set; }
     }
 }

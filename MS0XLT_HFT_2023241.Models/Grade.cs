@@ -8,19 +8,24 @@ using System.Threading.Tasks;
 
 namespace MS0XLT_HFT_2023241.Models
 {
-    public class Exam
+    public class Grade
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ExamId { get; set; }
+        public int GradeId { get; set; }
 
-        [Required]
+        
         public int SubjectId { get; set; }
 
         public int StudentId { get; set; }
 
-        public int Grade { get; set; }
+        [Range(1,5)]
+        public int GradeValue { get; set; }
 
-       
+
+        [Column(TypeName = "datetime2")]
+        public DateTime Date { get; set; }
+
+        public virtual Subject Subject { get; set; }
     }
 }
