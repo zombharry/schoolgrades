@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace MS0XLT_HFT_2023241.Client
 {
@@ -6,7 +7,7 @@ namespace MS0XLT_HFT_2023241.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
