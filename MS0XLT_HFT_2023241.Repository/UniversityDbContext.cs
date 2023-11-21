@@ -51,13 +51,13 @@ namespace MS0XLT_HFT_2023241.Repository
             });
             modelBuilder.Entity<Student>().HasData(new Student[]
             {
-                new Student{StudenttId=1,StudentName="John Doe",Semester=3},
-                new Student{StudenttId=2,StudentName="Jane Doe",Semester=1},
-                new Student{StudenttId=3,StudentName="John Smith",Semester=2},
-                new Student{StudenttId=4,StudentName="Harry Potter",Semester=5},
-                new Student{StudenttId=5,StudentName="Peter Grifin",Semester=6},
-                new Student{StudenttId=6,StudentName="Jack Daniel",Semester=4},
-                new Student{StudenttId=7,StudentName="Ozzy Osbourne",Semester=3}
+                new Student{StudentId=1,StudentName="John Doe",Semester=3},
+                new Student{StudentId=2,StudentName="Jane Doe",Semester=1},
+                new Student{StudentId=3,StudentName="John Smith",Semester=2},
+                new Student{StudentId=4,StudentName="Harry Potter",Semester=5},
+                new Student{StudentId=5,StudentName="Peter Grifin",Semester=6},
+                new Student{StudentId=6,StudentName="Jack Daniel",Semester=4},
+                new Student{StudentId=7,StudentName="Ozzy Osbourne",Semester=3}
             });
             modelBuilder.Entity<Grade>().HasData(new Grade[] {
                 new Grade{GradeId=1, SubjectId=1, StudentId=1, GradeValue=4,Date=new DateTime(2020,11,25) },

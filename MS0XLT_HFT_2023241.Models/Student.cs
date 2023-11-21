@@ -12,7 +12,7 @@ namespace MS0XLT_HFT_2023241.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int StudenttId { get; set; }
+        public int StudentId { get; set; }
 
         [Required]
         [StringLength(25)]
