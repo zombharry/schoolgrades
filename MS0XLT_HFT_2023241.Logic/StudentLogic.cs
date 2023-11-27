@@ -21,9 +21,9 @@ namespace MS0XLT_HFT_2023241.Logic
             }
             this.repo.Create(item);
         }
-        public IQueryable<Student> ReadAll()
+        public IEnumerable<Student> ReadAll()
         {
-            return this.repo.ReadAll();
+            return this.repo.ReadAll().ToList();
         }
         public Student Read(int id)
         {
@@ -37,10 +37,10 @@ namespace MS0XLT_HFT_2023241.Logic
         {
             this.repo.Delete(id);
         }
-        public IQueryable AllAvarageGrade()
+        public IEnumerable<object> AllAvarageGrade()
         {
             var students = this.ReadAll();
-            return students.Select(result => new { StudentId = result.StudentId, AvarageGrade = result.Grades.Average(g => g.GradeValue) });
+            return students.Select(result => new { StudentId = result.StudentId, AvarageGrade = result.Grades.Average(g => g.GradeValue) }).ToList();
         }
 
         public double GetAvarageGrade(int studentId)
