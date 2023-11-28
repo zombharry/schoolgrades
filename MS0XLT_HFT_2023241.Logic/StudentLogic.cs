@@ -39,7 +39,7 @@ namespace MS0XLT_HFT_2023241.Logic
         }
         public IEnumerable<object> AllAvarageGrade()
         {
-            var students = this.ReadAll();
+            var students = this.repo.ReadAll();
             return students.Select(result => new { StudentId = result.StudentId, AvarageGrade = result.Grades.Average(g => g.GradeValue) }).ToList();
         }
 
@@ -47,6 +47,19 @@ namespace MS0XLT_HFT_2023241.Logic
         {
             return this.Read(studentId).Grades.Average(g => g.GradeValue);
 
+        }
+
+        public IEnumerable<Student> FailedCount()
+        {
+           return this.repo.ReadAll().Where(s => s.Grades.Any(g => g.GradeValue==1)).ToList();
+        }
+        public IEnumerable<object> StudentsCredits()
+        {
+            return this.repo.ReadAll().Select(s => new 
+            {
+                StudentId = s.StudentId,
+                NumberOfCredits = s.Grades.Any(g => g.GradeValue != 1) ? s.Grades.Sum(c => c.Subject.Credit):0 
+            }).ToList();
         }
     }
 }
