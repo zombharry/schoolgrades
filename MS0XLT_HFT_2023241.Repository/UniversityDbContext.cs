@@ -21,7 +21,7 @@ namespace MS0XLT_HFT_2023241.Repository
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\UniversityDb.mdf;Integrated Security=True;MultipleActiveResultSets=true";
+                //string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\UniversityDb.mdf;Integrated Security=True;MultipleActiveResultSets=true";
 
                 optionsBuilder.UseLazyLoadingProxies().UseInMemoryDatabase("University");
             }
