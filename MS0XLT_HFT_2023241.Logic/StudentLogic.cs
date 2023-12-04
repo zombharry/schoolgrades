@@ -81,9 +81,17 @@ namespace MS0XLT_HFT_2023241.Logic
                 }
                 else
                 {
-                    return this.StudentId == b.StudentId
+                    if (this.NumberOfCredits==null)
+                    {
+                        return this.StudentId == b.StudentId && this.GradeAvg == b.GradeAvg;
+                    }
+                    else
+                    {
+                        return this.StudentId == b.StudentId
                         && this.NumberOfCredits == b.NumberOfCredits
                         && this.GradeAvg == b.GradeAvg;
+                    }
+                    
                 }
 
 

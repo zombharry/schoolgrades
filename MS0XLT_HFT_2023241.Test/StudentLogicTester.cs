@@ -6,6 +6,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static MS0XLT_HFT_2023241.Logic.StudentLogic;
 using static MS0XLT_HFT_2023241.Logic.StudentLogic.StudentInfo;
 
 namespace MS0XLT_HFT_2023241.Test
@@ -77,22 +78,53 @@ namespace MS0XLT_HFT_2023241.Test
                         }
                     } 
                 },
-            }.AsQueryable();
+            };
 
-            mockStudentRepo.Setup(x => x.ReadAll()).Returns(StudentList);
+            mockStudentRepo.Setup(x => x.ReadAll()).Returns(StudentList.AsQueryable());
+            mockStudentRepo.Setup(x => x.Read(1)).Returns(StudentList[0]);
+            mockStudentRepo.Setup(x => x.Read(2)).Returns(StudentList[1]);
+            mockStudentRepo.Setup(x => x.Read(3)).Returns(StudentList[2]);
+            mockStudentRepo.Setup(x => x.Read(4)).Returns(StudentList[3]);
 
             logic = new StudentLogic(mockStudentRepo.Object);
         }
 
-        [Test]
-        public void GetAvarageGradeTest()
+        [TestCase(1, 4)]
+        [TestCase(2, 2)]
+        [TestCase(3, 3)]
+        [TestCase(4, 1)]
+        public void GetAvarageGradeTest(int studentId, double expected)
         {
-            
+            var actual = logic.GetAvarageGrade(studentId);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
         public void AllAvarageGradeTest()
-        { }
+        {
+            var expected = new List<StudentInfo> {
+                new StudentInfo{
+                    StudentId=1,
+                    GradeAvg=4
+                },
+                new StudentInfo{
+                    StudentId=2,
+                    GradeAvg=2
+                },
+                new StudentInfo{
+                    StudentId=3,
+                    GradeAvg=3
+                },
+                new StudentInfo{
+                    StudentId=4,
+                    GradeAvg=1
+                },
+            };
+            var actual = logic.AllAvarageGrade();
+            Assert.AreEqual(expected, actual);
+            
+
+        }
         [Test]
         public void FailedStudentsTest()
         {
