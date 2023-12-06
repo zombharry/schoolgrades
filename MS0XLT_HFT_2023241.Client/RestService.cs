@@ -12,9 +12,13 @@ namespace MS0XLT_HFT_2023241.Client
     {
         HttpClient client;
 
-        public RestService(string baseurl)
+        public RestService(string baseurl, string pingableEndpoint = "swagger")
         {
-            
+            bool isOk = false;
+            do
+            {
+                isOk = Ping(baseurl + pingableEndpoint);
+            } while (isOk == false);
             Init(baseurl);
         }
 

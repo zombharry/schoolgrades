@@ -200,7 +200,7 @@ namespace MS0XLT_HFT_2023241.Client
         {
             
 
-            rest = new RestService("http://localhost:48224");
+            rest = new RestService("http://localhost:48224/");
 
             
 
