@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace MS0XLT_HFT_2023241.Models
 {
@@ -20,6 +21,7 @@ namespace MS0XLT_HFT_2023241.Models
 
         public int Semester { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Grade> Grades { get; set; }
     }
 }

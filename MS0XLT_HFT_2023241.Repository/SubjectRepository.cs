@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MS0XLT_HFT_2023241.Repository
 {
-    public class Subjectepository : Repository<Subject>, IRepository<Subject>
+    public class SubjectRepository : Repository<Subject>, IRepository<Subject>
     {
-        public Subjectepository(UniversityDbContext context) : base(context)
+        public SubjectRepository(UniversityDbContext context) : base(context)
         {
         }
         public override Subject Read(int id)
