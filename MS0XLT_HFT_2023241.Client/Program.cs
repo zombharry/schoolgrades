@@ -17,6 +17,26 @@ namespace MS0XLT_HFT_2023241.Client
                 string name = Console.ReadLine();
                 rest.Post(new Student() { StudentName = name }, "student");
             }
+            else if (entity == "Grade") 
+            {
+                Console.Write("Grade Value: ");
+                int gradeValue = int.Parse(Console.ReadLine());
+                Console.WriteLine("Subject Id: ");
+                int subjectId =int.Parse(Console.ReadLine());
+                Console.WriteLine("Student Id: ");
+                int studentId = int.Parse(Console.ReadLine());
+
+                rest.Post(new Grade() { GradeValue = gradeValue,SubjectId=subjectId,StudentId=studentId,Date=DateTime.Now }, "grade");
+            }
+            else
+            {
+                Console.WriteLine("Subject Name: ");
+                string subjectName = Console.ReadLine();
+                Console.WriteLine("Credit Value: ");
+                int credit = int.Parse(Console.ReadLine());
+
+                rest.Post(new Subject() {SubjectName = subjectName,Credit=credit },"subject");
+            }
         }
         static void List(string entity)
         {
@@ -29,17 +49,100 @@ namespace MS0XLT_HFT_2023241.Client
                 }
                 
             }
+            else if (entity == "Grade")
+            {
+                List<Grade> grades = rest.Get<Grade>("grade");
+                foreach (var item in grades)
+                {
+                    Console.WriteLine("Student: "+item.StudentId + ", Subject: " + item.SubjectId+", Value: "+item.GradeValue+" Date: "+item.Date);
+                }
+
+            }
+            else
+            {
+                List<Subject> subjects = rest.Get<Subject>("subject");
+                foreach (var item in subjects)
+                {
+                    Console.WriteLine(item.SubjectId+ ": "+item.SubjectName+ " Credit: "+item.Credit);
+                }
+
+            }
             Console.ReadLine();
         }
         static void Update(string entity)
         {
-            Console.WriteLine(entity + " update");
-            Console.ReadLine();
+            if (entity == "Student")
+            {
+                Console.WriteLine( "Student Id: " );
+                int id = int.Parse(Console.ReadLine());
+                Student newStudent = rest.Get<Student>(id, "student");
+                Console.WriteLine( "New name" );
+                string name = Console.ReadLine();
+                Console.WriteLine("New semester");
+                int semester = int.Parse(Console.ReadLine());
+                newStudent.StudentName = name;
+                newStudent.Semester = semester;
+                rest.Put(newStudent, "student");
+            }
+            else if (entity == "Grade")
+            {
+                Console.WriteLine("Grade Id: ");
+                int id = int.Parse(Console.ReadLine());
+                Console.Write("New Grade Value: ");
+                int gradeValue = int.Parse(Console.ReadLine());
+                Console.WriteLine("New Subject Id: ");
+                int subjectId = int.Parse(Console.ReadLine());
+                Console.WriteLine("New Student Id: ");
+                int studentId = int.Parse(Console.ReadLine());
+                Grade newGrade = rest.Get<Grade>(id, "grade");
+
+                newGrade.GradeValue = gradeValue;
+                newGrade.SubjectId = subjectId;
+                newGrade.StudentId = studentId;
+                newGrade.Date = DateTime.Now;
+                rest.Put(newGrade, "grade");
+            }
+            else
+            {
+                Console.WriteLine("Subject Id: ");
+                int id = int.Parse(Console.ReadLine());
+                Console.WriteLine("New Subject Name: ");
+                string subjectName = Console.ReadLine();
+                Console.WriteLine("New Credit Value: ");
+                int credit = int.Parse(Console.ReadLine());
+
+                Subject newSubject = rest.Get<Subject>(id, "subject");
+
+
+
+                newSubject.SubjectName = subjectName;
+                newSubject.Credit = credit;
+                rest.Put(newSubject, "subject");
+            }
         }
         static void Delete(string entity)
         {
-            Console.WriteLine(entity + " delete");
-            Console.ReadLine();
+            if (entity == "Student")
+            {
+                Console.WriteLine("Student Id: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "student");
+
+            }
+            else if (entity == "Grade")
+            {
+                Console.WriteLine("Grade Id: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "grade");
+
+            }
+            else
+            {
+                Console.WriteLine("Subject Id: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "subject");
+            }
+
         }
 
         static void Main(string[] args)
