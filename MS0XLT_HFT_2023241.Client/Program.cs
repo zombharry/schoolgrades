@@ -25,7 +25,7 @@ namespace MS0XLT_HFT_2023241.Client
                 List<Student> students = rest.Get<Student>("student");
                 foreach (var item in students)
                 {
-                    Console.WriteLine(item.StudentName);
+                    Console.WriteLine(item.StudentId+": "+item.StudentName);
                 }
                 
             }
@@ -44,8 +44,11 @@ namespace MS0XLT_HFT_2023241.Client
 
         static void Main(string[] args)
         {
-            rest = new RestService("http://localhost:48224","student");
-          
+            
+
+            rest = new RestService("http://localhost:48224");
+
+            
 
             var studentSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Student"))
