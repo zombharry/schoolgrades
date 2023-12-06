@@ -19,7 +19,7 @@ namespace MS0XLT_HFT_2023241.Models
         public string SubjectName { get; set; }
         public int Credit { get; set; }
 
-        [JsonIgnore]
+        
         public virtual ICollection<Grade> Grades { get; set; }
     }
 }

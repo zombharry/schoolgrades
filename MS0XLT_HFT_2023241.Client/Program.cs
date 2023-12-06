@@ -144,6 +144,57 @@ namespace MS0XLT_HFT_2023241.Client
             }
 
         }
+        static void NonCruds(string action) 
+        {
+            if (action == "MostFailedSubjects") {
+                Console.WriteLine("Number of subjects in the list: ");
+                int num = int.Parse(Console.ReadLine());
+                
+                List<Subject> subjects = rest.Get<Subject>("stat/MostFailedSubjects/"+num);
+                foreach (var item in subjects)
+                {
+                    Console.WriteLine(item.SubjectId + ": " + item.SubjectName + " Credit: " + item.Credit);
+                }
+                Console.ReadLine();
+            }
+            else if (action == "AllAvarageGrade") {
+                var avarageGrades = rest.Get<dynamic>("stat/AllAvarageGrade/");
+                foreach (var item in avarageGrades)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                Console.ReadLine();
+
+
+            }
+            else if (action == "GetAvarageGrade") {
+
+                Console.WriteLine("Student Id: ");
+                int id = int.Parse(Console.ReadLine());
+                double? avarageGrade = rest.Get<double>(id, "stat/GetAvarageGrade");
+                Console.WriteLine("Avarage grade: "+ avarageGrade);
+                Console.ReadLine();
+
+            }
+            else if (action == "FailedStudents") {
+                List<Student> students = rest.Get<Student>("stat/FailedStudents/");
+                foreach (var item in students)
+                {
+                    Console.WriteLine(item.StudentId+": "+ item.StudentName);
+                }
+                Console.ReadLine();
+
+            }
+            else if (action == "StudentsCredits") {
+                var credits = rest.Get<dynamic>("stat/StudentsCredits/");
+                foreach (var item in credits)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                Console.ReadLine();
+            }
+
+        }
 
         static void Main(string[] args)
         {
@@ -167,20 +218,27 @@ namespace MS0XLT_HFT_2023241.Client
                 .Add("Update", () => Update("Grade"))
                 .Add("Exit", ConsoleMenu.Close);
 
-            var subjectorSubMenu = new ConsoleMenu(args, level: 1)
+            var subjectSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Subject"))
                 .Add("Create", () => Create("Subject"))
                 .Add("Delete", () => Delete("Subject"))
                 .Add("Update", () => Update("Subject"))
                 .Add("Exit", ConsoleMenu.Close);
 
-           
+            var statSubMenu = new ConsoleMenu(args, level: 1)
+                 .Add("MostFailedSubjects", () => NonCruds("MostFailedSubjects"))
+                 .Add("AllAvarageGrade", () => NonCruds("AllAvarageGrade"))
+                 .Add("GetAvarageGrade", () => NonCruds("GetAvarageGrade"))
+                 .Add("FailedStudents", () => NonCruds("FailedStudents"))
+                 .Add("StudentsCredits", () => NonCruds("StudentsCredits"))
+                 .Add("Exit", ConsoleMenu.Close);
 
 
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Grades", () => gradeSubMenu.Show())
                 .Add("Students", () => studentSubMenu.Show())
-                .Add("Subjectss", () => subjectorSubMenu.Show())
+                .Add("Subjectss", () => subjectSubMenu.Show())
+                .Add("Stat", () => statSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();

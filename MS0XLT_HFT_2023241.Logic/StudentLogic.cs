@@ -72,6 +72,10 @@ namespace MS0XLT_HFT_2023241.Logic
             public int NumberOfCredits { get; set; }
             public double GradeAvg { get; set; }
 
+            public override string ToString()
+            {
+                return $"StudentId: {StudentId},  GradeAvarage: {GradeAvg}, Number of credits: {NumberOfCredits}";
+            }
             public override bool Equals(object obj)
             {
                 StudentInfo b = obj as StudentInfo;
