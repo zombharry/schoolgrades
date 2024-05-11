@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using MS0XLT_HFT_2023241.Endpoint.Services;
 using MS0XLT_HFT_2023241.Logic;
 using MS0XLT_HFT_2023241.Models;
 using System.Collections.Generic;
@@ -13,9 +15,13 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
     {
         IStudentLogic logic;
 
-        public StudentController(IStudentLogic logic)
+        private readonly IHubContext<SignalRHub> hub;
+
+     
+        public StudentController(IStudentLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
+            this.hub = hub;
         }
 
         // GET: api/<StudentController>
@@ -37,6 +43,8 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
         public void Create([FromBody] Student value)
         {
             this.logic.Create(value);
+
+            hub.Clients.All.SendAsync("StudentCreated", value);
         }
 
         // PUT api/<StudentController>/5
@@ -44,13 +52,17 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
         public void Update([FromBody] Student value)
         {
             this.logic.Update(value);
+
+            hub.Clients.All.SendAsync("StudentUpdated", value);
         }
 
         // DELETE api/<StudentController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var studentToDelete = this.logic.Read(id);
             this.logic.Delete(id);
+            hub.Clients.All.SendAsync("StudentDeleted", studentToDelete);
         }
     }
 }
