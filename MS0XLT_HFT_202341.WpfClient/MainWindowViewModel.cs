@@ -23,6 +23,8 @@ namespace MS0XLT_HFT_202341.WpfClient
         }
         public RestCollection<Student> Students { get; set; }
 
+        //public RestCollection<dynamic> Statistics { get; set; }
+
         public ICommand CreateStudentCommand { get; set; }
 
         public ICommand DeleteStudentCommand { get; set; }
@@ -61,7 +63,8 @@ namespace MS0XLT_HFT_202341.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Students = new RestCollection<Student>("http://localhost:48224", "student","hub");
+                Students = new RestCollection<Student>("http://localhost:48224/", "student","hub");
+                //Statistics = new RestCollection<dynamic>("http://localhost:48224/", "stat/AllAvarageGrade/");
 
                 CreateStudentCommand = new RelayCommand(() =>
                 {
