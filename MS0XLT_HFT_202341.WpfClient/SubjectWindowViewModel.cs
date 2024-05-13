@@ -56,7 +56,7 @@ namespace MS0XLT_HFT_202341.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Subjects = new RestCollection<Subject>("http://localhost:48224", "subject");
+                Subjects = new RestCollection<Subject>("http://localhost:48224/", "subject");
 
                 CreateSubjectCommand = new RelayCommand(() =>
                 {

@@ -56,7 +56,7 @@ namespace MS0XLT_HFT_202341.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Grades = new RestCollection<Grade>("http://localhost:48224", "grade");
+                Grades = new RestCollection<Grade>("http://localhost:48224/", "grade");
 
                 CreateGradeCommand = new RelayCommand(() =>
                 {

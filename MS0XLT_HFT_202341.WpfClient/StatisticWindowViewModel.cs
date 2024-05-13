@@ -46,9 +46,9 @@ namespace MS0XLT_HFT_202341.WpfClient
             if (!IsInDesignMode)
             {
                 Students = new RestCollection<Student>("http://localhost:48224/", "student");
-                AvgGrades = new RestCollection<StudentInfo>("http://localhost:48224/", "stat/AllAvarageGrade");
+                AvgGrades = new RestCollection<Object>("http://localhost:48224/", "stat/AllAvarageGrade");
 
-                Credits = new RestCollection<StudentInfo>("http://localhost:48224/", "stat/AllAvarageGrade");
+                Credits = new RestCollection<Object>("http://localhost:48224/", "stat/AllAvarageGrade");
 
             }
         }
