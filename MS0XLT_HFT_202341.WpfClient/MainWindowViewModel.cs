@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MS0XLT_HFT_202341.WpfClient
 {
-    public class MainWindowViewModel : ObservableRecipient
+    public class MainWindowViewModel : ObservableRecipient 
     {
+        
+
         private string errorMessage;
 
         public string ErrorMessage
@@ -21,9 +24,19 @@ namespace MS0XLT_HFT_202341.WpfClient
             get { return errorMessage; }
             set { SetProperty(ref errorMessage, value); }
         }
+
+        
         public RestCollection<Student> Students { get; set; }
 
         //public RestCollection<dynamic> Statistics { get; set; }
+        //public RestCollection<Grade> Grades { get; set; }
+        //public RestCollection<Subject> Subjects { get; set; }
+
+        public ICommand ShowStatisticWindowCommand { get; }
+
+        public ICommand ShowGradeWindowCommand { get; }
+
+        public ICommand ShowSubjectWindowCommand { get; }
 
         public ICommand CreateStudentCommand { get; set; }
 
@@ -41,17 +54,19 @@ namespace MS0XLT_HFT_202341.WpfClient
 
         public Student SelectedStudent
         {
-            
+
             get { return selectedStudent; }
-            set 
-            { 
+            set
+            {
                 SetProperty(ref selectedStudent, value);
                 (DeleteStudentCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
-       
-        public static bool IsInDesignMode 
+        
+
+
+        public static bool IsInDesignMode
         {
             get
             {
@@ -63,22 +78,15 @@ namespace MS0XLT_HFT_202341.WpfClient
         {
             if (!IsInDesignMode)
             {
-                Students = new RestCollection<Student>("http://localhost:48224/", "student","hub");
+                Students = new RestCollection<Student>("http://localhost:48224/", "student", "hub");
                 //Statistics = new RestCollection<dynamic>("http://localhost:48224/", "stat/AllAvarageGrade/");
+                //Subjects = new RestCollection<Subject>("http://localhost:48224", "subject");
+                //Grades = new RestCollection<Grade>("http://localhost:48224", "grade");
 
-                CreateStudentCommand = new RelayCommand(() =>
-                {
-                    Students.Add(new Student()
-                    {
-                        StudentId = SelectedStudent.StudentId,
-                        StudentName = SelectedStudent.StudentName,
-                        Semester = SelectedStudent.Semester
 
-                    }); ;
-                });
 
                 UpdateStudentCommand = new RelayCommand(
-                    () => 
+                    () =>
                     {
                         try
                         {
@@ -93,12 +101,45 @@ namespace MS0XLT_HFT_202341.WpfClient
 
                 DeleteStudentCommand = new RelayCommand(
                     () => { Students.Delete(selectedStudent.StudentId); },
-                    () => { return SelectedStudent != null;
+                    () =>
+                    {
+                        return SelectedStudent != null;
                     });
 
                 SelectedStudent = new Student();
+
+                CreateStudentCommand = new RelayCommand(() =>
+                {
+                    Students.Add(new Student()
+                    {
+                        StudentId = SelectedStudent.StudentId,
+                        StudentName = SelectedStudent.StudentName,
+                        Semester = SelectedStudent.Semester
+
+                    }); ;
+                });
+
+
+                ShowStatisticWindowCommand = new RelayCommand(() =>
+                {
+                    StatisticWindow statisticWindow = new StatisticWindow();
+                    statisticWindow.Show();
+                });
+
+                ShowGradeWindowCommand = new RelayCommand(() =>
+                {
+                    GradeWindow gradeWindow = new GradeWindow();
+                    gradeWindow.Show();
+                });
+
+                ShowSubjectWindowCommand = new RelayCommand(() =>
+                {
+                    SubjectWindow subjectWindow = new SubjectWindow();
+                    subjectWindow.Show();
+                });
             }
         }
+
 
     }
 }

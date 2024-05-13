@@ -47,7 +47,7 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
             hub.Clients.All.SendAsync("StudentCreated", value);
         }
 
-        // PUT api/<StudentController>/5
+        
         [HttpPut]
         public void Update([FromBody] Student value)
         {

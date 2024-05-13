@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using MS0XLT_HFT_202341.WpfClient.helperclass;
 
 namespace MS0XLT_HFT_202341.WpfClient
 {
@@ -23,8 +24,8 @@ namespace MS0XLT_HFT_202341.WpfClient
         }
         //public RestCollection<Student> Students { get; set; }
 
-        public RestCollection<dynamic> AvgGrades { get; set; }
-        public RestCollection<dynamic> Credits { get; set; }
+        public RestCollection<StudentInfo> AvgGrades { get; set; }
+        public RestCollection<StudentInfo> Credits { get; set; }
 
         public RestCollection<Student> Students { get; set; }
 
@@ -45,11 +46,11 @@ namespace MS0XLT_HFT_202341.WpfClient
             if (!IsInDesignMode)
             {
                 Students = new RestCollection<Student>("http://localhost:48224/", "student");
-                AvgGrades = new RestCollection<dynamic>("http://localhost:48224/", "stat/AllAvarageGrade/");
+                AvgGrades = new RestCollection<StudentInfo>("http://localhost:48224/", "stat/AllAvarageGrade");
 
-                Credits = new RestCollection<dynamic>("http://localhost:48224/", "stat/AllAvarageGrade/");
+                Credits = new RestCollection<StudentInfo>("http://localhost:48224/", "stat/AllAvarageGrade");
 
-            }   
+            }
         }
 
     }

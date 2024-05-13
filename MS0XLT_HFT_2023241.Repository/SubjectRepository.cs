@@ -28,6 +28,7 @@ namespace MS0XLT_HFT_2023241.Repository
                 }
                 
             }
+            this.context.SaveChanges();
         }
     }
 }

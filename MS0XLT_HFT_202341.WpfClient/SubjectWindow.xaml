@@ -1,13 +1,13 @@
-﻿<Window x:Class="MS0XLT_HFT_202341.WpfClient.SubjectViewModel"
+﻿<Window x:Class="MS0XLT_HFT_202341.WpfClient.SubjectWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MS0XLT_HFT_202341.WpfClient"
         mc:Ignorable="d"
-        Title="SubjectViewModel" Height="450" Width="800">
-	<Window.DataContext>
-	<local:MainWindowViewModel/>
+        Title="SubjectWindow" Height="450" Width="800">
+<Window.DataContext>
+	<local:SubjectWindowViewModel/>
 </Window.DataContext>
 
 <Grid>
@@ -26,7 +26,7 @@
 			<ColumnDefinition Width="7*"/>
 			<ColumnDefinition Width="3*"/>
 		</Grid.ColumnDefinitions>
-		<ListBox ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}">
+			<ListBox ItemsSource="{Binding Subjects}" SelectedItem="{Binding SelectedSubject}">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal">
@@ -40,16 +40,14 @@
 		</ListBox>
 		<StackPanel Grid.Column="1">
 			<Label Content="Id"/>
-			<TextBox Text="{Binding SelectedStudent.StudentId}" Padding="6" Margin="0,0,0,3" />
+			<TextBox Text="{Binding SelectedSubject.SubjectId}" Padding="6" Margin="0,0,0,3" />
 			<Label Content="Name"/>
-			<TextBox Text="{Binding SelectedStudent.StudentName}" Padding="6" Margin="0,0,0,3" />
-			<Label Content="Semester"/>
-			<TextBox Text="{Binding SelectedStudent.Semester}" Padding="6" Margin="0,0,0,3" />
-			<Label Content="Kreditek"/>
-			<Label Content="Bukott"/>
-			<Button Content="Create Student" Command="{Binding CreateStudentCommand}" Margin="6" Padding="5" />
-			<Button Content="Delete Student" Command="{Binding DeleteStudentCommand}" Margin="6" Padding="5" />
-			<Button Content="Update Student" Command="{Binding UpdateStudentCommand}" Margin="6" Padding="5" />
+			<TextBox Text="{Binding SelectedSubject.SubjectName}" Padding="6" Margin="0,0,0,3" />
+			<Label Content="Credits"/>
+				<TextBox Text="{Binding SelectedSubject.Credit}" Padding="6" Margin="0,0,0,3" />
+				<Button Content="Create Subject" Command="{Binding CreateSubjectCommand}" Margin="6" Padding="5" />
+				<Button Content="Delete Subject" Command="{Binding DeleteSubjectCommand}" Margin="6" Padding="5" />
+				<Button Content="Update Subject" Command="{Binding UpdateSubjectCommand}" Margin="6" Padding="5" />
 		</StackPanel>
 	</Grid>
 	

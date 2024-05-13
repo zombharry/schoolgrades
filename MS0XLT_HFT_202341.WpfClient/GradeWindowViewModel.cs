@@ -32,13 +32,13 @@ namespace MS0XLT_HFT_202341.WpfClient
             set
             {
                 SetProperty(ref selectedGrade, value);
-                (RemoveGradeCommand as RelayCommand).NotifyCanExecuteChanged();
+                (DeleteGradeCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
         public ICommand CreateGradeCommand { get; set; }
 
-        public ICommand RemoveGradeCommand { get; set; }
+        public ICommand DeleteGradeCommand { get; set; }
 
         public ICommand UpdateGradeCommand { get; set; }
 
@@ -81,9 +81,10 @@ namespace MS0XLT_HFT_202341.WpfClient
                         }
                     });
 
-                RemoveGradeCommand = new RelayCommand(
+                DeleteGradeCommand = new RelayCommand(
                     () => { Grades.Delete(SelectedGrade.SubjectId); },
-                    () => {
+                    () =>
+                    {
                         return SelectedGrade != null;
                     });
 

@@ -16,9 +16,9 @@
 			<RowDefinition Height="8*"/>
 		</Grid.RowDefinitions>
 		<StackPanel Grid.Row="0" Orientation="Horizontal">
-			<Button Content="Subjects"  Margin="10" Padding="5" />
-			<Button Content="Grades"  Margin="10" Padding="5" />
-			<Button Content="Statistics"  Margin="10" Padding="5" />
+			<Button Content="Subjects" Command="{Binding ShowSubjectWindowCommand}" Margin="10" Padding="5" />
+			<Button Content="Grades" Command="{Binding ShowGradeWindowCommand}" Margin="10" Padding="5" />
+			<Button Content="Statistics" Command="{Binding ShowStatisticWindowCommand}" Margin="10" Padding="5" />
 		</StackPanel>
 		<Grid Grid.Row="1">
 			

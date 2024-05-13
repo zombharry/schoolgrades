@@ -26,13 +26,14 @@
 				<ColumnDefinition Width="7*"/>
 				<ColumnDefinition Width="3*"/>
 			</Grid.ColumnDefinitions>
-			<ListBox ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}">
+			<ListBox ItemsSource="{Binding Grades}" SelectedItem="{Binding SelectedGrade}" >
 				<ListBox.ItemTemplate>
 					<DataTemplate>
-						<StackPanel Orientation="Horizontal">
+						<StackPanel Orientation="Horizontal" >
 							<Label Content="{Binding StudentId}"/>
-							<Label Content="{Binding StudentName}"/>
-							<Label Content="{Binding Semester}"/>
+							<Label Content="{Binding Subject}"/>
+							<Label Content="{Binding GradeValue}"/>
+							<Label Content="{Binding Date}"/>
 						</StackPanel>
 
 					</DataTemplate>
@@ -40,16 +41,16 @@
 			</ListBox>
 			<StackPanel Grid.Column="1">
 				<Label Content="Id"/>
-				<TextBox Text="{Binding SelectedStudent.StudentId}" Padding="6" Margin="0,0,0,3" />
+				<TextBox Text="{Binding SelectedGrade.StudentId}" Padding="6" Margin="0,0,0,3" />
 				<Label Content="Name"/>
-				<TextBox Text="{Binding SelectedStudent.StudentName}" Padding="6" Margin="0,0,0,3" />
+				<TextBox Text="{Binding SelectedGrade.Subject}" Padding="6" Margin="0,0,0,3" />
 				<Label Content="Semester"/>
-				<TextBox Text="{Binding SelectedStudent.Semester}" Padding="6" Margin="0,0,0,3" />
+				<TextBox Text="{Binding SelectedGrade.GradeValue}" Padding="6" Margin="0,0,0,3" />
 				<Label Content="Kreditek"/>
 				<Label Content="Bukott"/>
-				<Button Content="Create Student" Command="{Binding CreateStudentCommand}" Margin="6" Padding="5" />
-				<Button Content="Delete Student" Command="{Binding DeleteStudentCommand}" Margin="6" Padding="5" />
-				<Button Content="Update Student" Command="{Binding UpdateStudentCommand}" Margin="6" Padding="5" />
+				<Button Content="Create Student" Command="{Binding CreateGradeCommand}" Margin="6" Padding="5" />
+				<Button Content="Delete Student" Command="{Binding DeleteGradeCommand}" Margin="6" Padding="5" />
+				<Button Content="Update Student" Command="{Binding UpdateGradeCommand}" Margin="6" Padding="5" />
 			</StackPanel>
 		</Grid>
 

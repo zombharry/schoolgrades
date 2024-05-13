@@ -32,13 +32,13 @@ namespace MS0XLT_HFT_202341.WpfClient
             set
             {
                 SetProperty(ref selectedSubject, value);
-                (RemoveSubjectCommand as RelayCommand).NotifyCanExecuteChanged();
+                (DeleteSubjectCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
         public ICommand CreateSubjectCommand { get; set; }
 
-        public ICommand RemoveSubjectCommand { get; set; }
+        public ICommand DeleteSubjectCommand { get; set; }
 
         public ICommand UpdateSubjectCommand { get; set; }
 
@@ -62,7 +62,7 @@ namespace MS0XLT_HFT_202341.WpfClient
                 {
                     Subjects.Add(new Subject()
                     {
-                       
+
 
                     }); ;
                 });
@@ -81,9 +81,10 @@ namespace MS0XLT_HFT_202341.WpfClient
                         }
                     });
 
-                RemoveSubjectCommand = new RelayCommand(
+                DeleteSubjectCommand = new RelayCommand(
                     () => { Subjects.Delete(SelectedSubject.SubjectId); },
-                    () => {
+                    () =>
+                    {
                         return SelectedSubject != null;
                     });
 

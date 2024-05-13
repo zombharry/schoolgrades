@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace MS0XLT_HFT_202341.WpfClient
 {
     /// <summary>
-    /// Interaction logic for SubjectViewModel.xaml
+    /// Interaction logic for SubjectPage.xaml
     /// </summary>
-    public partial class SubjectWindow : Window
+    public partial class SubjectPage : Page
     {
-        public SubjectWindow()
+        public SubjectPage()
         {
             InitializeComponent();
         }

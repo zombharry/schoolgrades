@@ -1,5 +1,7 @@
 ﻿let students = [];
 let connection = null;
+
+let studentIdToUpdate = -1;
 getData();
 setupSignalR();
 function setupSignalR()
@@ -59,14 +61,45 @@ function display()
                 <td>${t.semester} </td>
                 <td>
                     <button onclick="remove(${t.studentId})">Delete</button>
-                    <button>Edit</button>
+                    <button onclick="showUpdate(${t.studentId})">Edit</button>
                  </td>
             </tr>`;
     })
 }
+function showUpdate(id)
+{
+
+    document.getElementById('studentnametoupdate').value = students.find(t => t['studentId'] == id)['studentName']
+    document.getElementById('semestertoupdate').value = students.find(t => t['studentId'] == id)['semester']
+    document.getElementById('updateformdiv').style.display = 'flex';
+    studentIdToUpdate = id;
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let studentnametoupdate = document.getElementById('studentnametoupdate').value;
+    let semestertoupdate = document.getElementById('semestertoupdate').value;
+    fetch('http://localhost:48224/student', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            {
+                studentId: studentIdToUpdate,
+                studentName: studentnametoupdate,
+                semester: semestertoupdate
+            }),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getData();
+        })
+        .catch((error) => { console.error('Error', error); });
+
+}
+
 function remove(id)
 {
-    alert(id);
     fetch('http://localhost:48224/student/'+id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
