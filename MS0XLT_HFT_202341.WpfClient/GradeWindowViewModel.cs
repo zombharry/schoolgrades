@@ -86,7 +86,7 @@ namespace MS0XLT_HFT_202341.WpfClient
                 {
                     Grades.Add(new Grade()
                     {
-                        GradeId = SelectedGrade.GradeId,
+                        SubjectId = SelectedGrade.SubjectId,
                         StudentId = SelectedGrade.StudentId,
                         GradeValue = SelectedGrade.GradeValue,
 
