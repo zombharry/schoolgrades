@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using MS0XLT_HFT_202341.WpfClient.helperclass;
+using System.Windows.Navigation;
 
 namespace MS0XLT_HFT_202341.WpfClient
 {
@@ -24,8 +25,16 @@ namespace MS0XLT_HFT_202341.WpfClient
         }
         //public RestCollection<Student> Students { get; set; }
 
-        public RestCollection<Object> AvgGrades { get; set; }
-        public RestCollection<Object> Credits { get; set; }
+        private RestService rest;
+
+        public List<object> AvgGrades { get { return rest.Get<dynamic>("stat/AllAvarageGrade/"); } }
+        public List<object> Credits { get { 
+                return rest.Get<dynamic>("stat/StudentsCredits/");
+            } }
+
+        
+
+
 
         public RestCollection<Student> Students { get; set; }
 
@@ -46,9 +55,8 @@ namespace MS0XLT_HFT_202341.WpfClient
             if (!IsInDesignMode)
             {
                 Students = new RestCollection<Student>("http://localhost:48224/", "student");
-                AvgGrades = new RestCollection<Object>("http://localhost:48224/", "stat/AllAvarageGrade");
 
-                Credits = new RestCollection<Object>("http://localhost:48224/", "stat/AllAvarageGrade");
+                rest = new RestService("http://localhost:48224/");
 
             }
         }

@@ -65,6 +65,7 @@ namespace MS0XLT_HFT_202341.WpfClient
                         GradeId = SelectedGrade.GradeId,
                         StudentId = SelectedGrade.StudentId,
                         GradeValue = SelectedGrade.GradeValue,
+                        
                         Date = DateTime.Now
 
                     }) ; 

@@ -51,7 +51,7 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<ListBox Grid.Column="2" ItemsSource="{Binding Credits}">
+			<ListBox Grid.Column="2" ItemsSource="{Binding AvgGrades}">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal">

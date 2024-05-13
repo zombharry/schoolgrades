@@ -31,7 +31,7 @@
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal" >
 							<Label Content="{Binding StudentId}"/>
-							<Label Content="{Binding Subject}"/>
+							<Label Content="{Binding SubjectId}"/>
 							<Label Content="{Binding GradeValue}"/>
 							<Label Content="{Binding Date}"/>
 						</StackPanel>
