@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1> Student catalog</h1>
+    <a href="statistic.html">statistics</a>
+    <div id="formdiv">
+        <input type="text" id="studentname" />
+        <input type="number" id="semester" />
+        <button id="add_btn" onclick="create()">Add item</button>
+    </div>
+
+    <div id="updateformdiv">
+        <input type="text" id="studentnametoupdate" />
+        <input type="number" id="semestertoupdate" />
+        <button id="add_btn" onclick="update()">Update item</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID </th>
+                <th>Name </th>
+                <th>Semester </th>
+                <th>Action </th>
+            </tr>
+        </thead>
+        <tbody id="resultArea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

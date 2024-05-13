@@ -1,0 +1,20 @@
+﻿body {
+}
+#updateformdiv {
+    display: none;
+    flex-direction:column;
+    margin-bottom:10px;
+}
+    #updateformdiv label, button, input {
+        margin:10px;
+        padding:5px;
+    }
+#formdiv {
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+    #formdiv label, button, input {
+        margin: 10px;
+        padding: 5px;
+    }

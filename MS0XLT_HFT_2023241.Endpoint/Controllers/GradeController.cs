@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using MS0XLT_HFT_2023241.Endpoint.Services;
 using MS0XLT_HFT_2023241.Logic;
 using MS0XLT_HFT_2023241.Models;
 using System.Collections.Generic;
@@ -12,10 +14,12 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
     public class GradeController : ControllerBase
     {
         IGradeLogic logic;
+        IHubContext<SignalRHub> hub;
 
-        public GradeController(IGradeLogic logic)
+        public GradeController(IGradeLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
+            this.hub = hub;
         }
 
         // GET: api/<GradeController>
@@ -37,6 +41,7 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
         public void Create([FromBody] Grade value)
         {
             this.logic.Create(value);
+            hub.Clients.All.SendAsync("GradeCreated", value);
         }
 
         // PUT api/<GradeController>/5
@@ -44,13 +49,17 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
         public void Update([FromBody] Grade value)
         {
             this.logic.Update(value);
+
+            hub.Clients.All.SendAsync("GradeUpdated", value);
         }
 
         // DELETE api/<GradeController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var gradeToDelete = this.logic.Read(id);
             this.logic.Delete(id);
+            hub.Clients.All.SendAsync("GradeDeleted", gradeToDelete);
         }
     }
 }

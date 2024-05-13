@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MS0XLT_HFT_2023241.Endpoint.Services;
 using MS0XLT_HFT_2023241.Logic;
 using MS0XLT_HFT_2023241.Models;
 using MS0XLT_HFT_2023241.Repository;
@@ -38,16 +39,21 @@ namespace MS0XLT_HFT_2023241.Endpoint
             services.AddTransient<IRepository<Student>, StudentRepository>();
             services.AddTransient<IRepository<Grade>, GradeRepository>();
 
+
+            services.AddSignalR();
+
             services.AddTransient<ISubjectLogic, SubjectLogic>();
             services.AddTransient<IStudentLogic, StudentLogic>();
             services.AddTransient<IGradeLogic, GradeLogic>();
 
             services.AddControllers();
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MS0XLT_HFT_2023241.Endpoint", Version = "v1" });
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,14 +72,31 @@ namespace MS0XLT_HFT_2023241.Endpoint
                 await context.Response.WriteAsJsonAsync(response);
             }));
 
+
+            app.UseCors(x => x
+            .AllowCredentials()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://localhost:31528")
+            );
+
             app.UseRouting();
 
             app.UseAuthorization();
 
+           
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
+
         }
     }
 }
