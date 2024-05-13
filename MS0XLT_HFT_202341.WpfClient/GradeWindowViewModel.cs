@@ -58,18 +58,7 @@ namespace MS0XLT_HFT_202341.WpfClient
             {
                 Grades = new RestCollection<Grade>("http://localhost:48224/", "grade");
 
-                CreateGradeCommand = new RelayCommand(() =>
-                {
-                    Grades.Add(new Grade()
-                    {
-                        GradeId = SelectedGrade.GradeId,
-                        StudentId = SelectedGrade.StudentId,
-                        GradeValue = SelectedGrade.GradeValue,
-                        
-                        Date = DateTime.Now
-
-                    }) ; 
-                });
+               
 
                 UpdateGradeCommand = new RelayCommand(
                     () =>
@@ -93,6 +82,18 @@ namespace MS0XLT_HFT_202341.WpfClient
                     });
 
                 SelectedGrade = new Grade();
+                CreateGradeCommand = new RelayCommand(() =>
+                {
+                    Grades.Add(new Grade()
+                    {
+                        GradeId = SelectedGrade.GradeId,
+                        StudentId = SelectedGrade.StudentId,
+                        GradeValue = SelectedGrade.GradeValue,
+
+                        Date = DateTime.Now
+
+                    });
+                });
             }
         }
     }

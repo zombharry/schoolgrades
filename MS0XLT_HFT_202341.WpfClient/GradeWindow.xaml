@@ -42,12 +42,14 @@
 			<StackPanel Grid.Column="1">
 				<Label Content="Id"/>
 				<TextBox Text="{Binding SelectedGrade.StudentId}" Padding="6" Margin="0,0,0,3" />
-				<Label Content="Name"/>
-				<TextBox Text="{Binding SelectedGrade.Subject}" Padding="6" Margin="0,0,0,3" />
-				<Label Content="Semester"/>
+				<Label Content="SubjectId"/>
+				<TextBox Text="{Binding SelectedGrade.SubjectId}" Padding="6" Margin="0,0,0,3" />
+				<Label Content="Grade Value"/>
 				<TextBox Text="{Binding SelectedGrade.GradeValue}" Padding="6" Margin="0,0,0,3" />
-				<Label Content="Kreditek"/>
-				<Label Content="Bukott"/>
+
+				<Label Content="Semester"/>
+				<DatePicker Text="{Binding SelectedGrade.Date}" Padding="6" Margin="0,0,0,3" />
+
 				<Button Content="Create Student" Command="{Binding CreateGradeCommand}" Margin="6" Padding="5" />
 				<Button Content="Delete Student" Command="{Binding DeleteGradeCommand}" Margin="6" Padding="5" />
 				<Button Content="Update Student" Command="{Binding UpdateGradeCommand}" Margin="6" Padding="5" />

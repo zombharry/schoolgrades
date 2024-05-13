@@ -58,16 +58,7 @@ namespace MS0XLT_HFT_202341.WpfClient
             {
                 Subjects = new RestCollection<Subject>("http://localhost:48224/", "subject");
 
-                CreateSubjectCommand = new RelayCommand(() =>
-                {
-                    Subjects.Add(new Subject()
-                    {
-                        SubjectId = SelectedSubject.SubjectId,
-                        SubjectName = SelectedSubject.SubjectName,
-                        Credit = SelectedSubject.Credit
-
-                    }); ;
-                });
+               
 
                 UpdateSubjectCommand = new RelayCommand(
                     () =>
@@ -89,6 +80,17 @@ namespace MS0XLT_HFT_202341.WpfClient
                     {
                         return SelectedSubject != null;
                     });
+
+                CreateSubjectCommand = new RelayCommand(() =>
+                {
+                    Subjects.Add(new Subject()
+                    {
+                        SubjectId = SelectedSubject.SubjectId,
+                        SubjectName = SelectedSubject.SubjectName,
+                        Credit = SelectedSubject.Credit
+
+                    }); ;
+                });
 
                 SelectedSubject = new Subject();
             }
