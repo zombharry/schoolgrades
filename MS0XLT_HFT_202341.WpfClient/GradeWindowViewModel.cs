@@ -62,9 +62,12 @@ namespace MS0XLT_HFT_202341.WpfClient
                 {
                     Grades.Add(new Grade()
                     {
+                        GradeId = SelectedGrade.GradeId,
+                        StudentId = SelectedGrade.StudentId,
+                        GradeValue = SelectedGrade.GradeValue,
+                        Date = DateTime.Now
 
-
-                    }); ;
+                    }) ; 
                 });
 
                 UpdateGradeCommand = new RelayCommand(

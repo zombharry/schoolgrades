@@ -62,7 +62,9 @@ namespace MS0XLT_HFT_202341.WpfClient
                 {
                     Subjects.Add(new Subject()
                     {
-
+                        SubjectId = SelectedSubject.SubjectId,
+                        SubjectName = SelectedSubject.SubjectName,
+                        Credit = SelectedSubject.Credit
 
                     }); ;
                 });

@@ -28,7 +28,7 @@ namespace MS0XLT_HFT_202341.WpfClient
         
         public RestCollection<Student> Students { get; set; }
 
-        //public RestCollection<dynamic> Statistics { get; set; }
+        //public RestCollection<Object> Statistics { get; set; }
         //public RestCollection<Grade> Grades { get; set; }
         //public RestCollection<Subject> Subjects { get; set; }
 
@@ -79,7 +79,7 @@ namespace MS0XLT_HFT_202341.WpfClient
             if (!IsInDesignMode)
             {
                 Students = new RestCollection<Student>("http://localhost:48224/", "student", "hub");
-                //Statistics = new RestCollection<dynamic>("http://localhost:48224/", "stat/AllAvarageGrade/");
+                //Statistics = new RestCollection<Object>("http://localhost:48224/", "stat/AllAvarageGrade/");
                 //Subjects = new RestCollection<Subject>("http://localhost:48224", "subject");
                 //Grades = new RestCollection<Grade>("http://localhost:48224", "grade");
 

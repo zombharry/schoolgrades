@@ -24,8 +24,8 @@ namespace MS0XLT_HFT_202341.WpfClient
         }
         //public RestCollection<Student> Students { get; set; }
 
-        public RestCollection<StudentInfo> AvgGrades { get; set; }
-        public RestCollection<StudentInfo> Credits { get; set; }
+        public RestCollection<Object> AvgGrades { get; set; }
+        public RestCollection<Object> Credits { get; set; }
 
         public RestCollection<Student> Students { get; set; }
 
