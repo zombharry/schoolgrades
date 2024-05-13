@@ -27,12 +27,26 @@ namespace MS0XLT_HFT_202341.WpfClient
 
         private RestService rest;
 
-        public List<object> AvgGrades { get { return rest.Get<dynamic>("stat/AllAvarageGrade/"); } }
-        public List<object> Credits { get { 
-                return rest.Get<dynamic>("stat/StudentsCredits/");
+        public List<StudentInfo> AvgGrades { get { return rest.Get<StudentInfo>("stat/AllAvarageGrade/"); } }
+        public List<StudentInfo> Credits { get { 
+                return rest.Get<StudentInfo>("stat/StudentsCredits/");
             } }
 
-        
+        //public List<object> combinedList
+        //{
+        //    get {
+        //        List<object> transformedItems = (List<object>)AvgGrades.Select(item =>
+        //        {
+                    
+        //            return new StudentInfo
+        //            {
+        //                StudentId =((dynamic) item).StudentId,
+        //                GradeAvg = ((dynamic)item).GradeAvg
+        //            };
+        //        });
+        //        return transformedItems;
+        //    }
+        //}
 
 
 

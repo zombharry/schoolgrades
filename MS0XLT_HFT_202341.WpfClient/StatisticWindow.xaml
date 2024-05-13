@@ -44,19 +44,17 @@
 				<ListBox.ItemTemplate>
 					<DataTemplate >
 						<StackPanel Orientation="Horizontal">
-							<Label Content="{Binding StudentId}"/>
-							<Label Content="{Binding NumberOfCredits}"/>
+							<Label Content="{Binding GradeAvg}"/>
 						</StackPanel>
 
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<ListBox Grid.Column="2" ItemsSource="{Binding AvgGrades}">
+			<ListBox Grid.Column="2" ItemsSource="{Binding Credits}">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
 						<StackPanel Orientation="Horizontal">
-							<Label Content="{Binding StudentId}"/>
-							<Label Content="{Binding GradeAvg}"/>
+							<Label Content="{Binding NumberOfCredits}"/>
 						</StackPanel>
 
 					</DataTemplate>
