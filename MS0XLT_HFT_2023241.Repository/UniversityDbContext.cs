@@ -41,7 +41,9 @@ namespace MS0XLT_HFT_2023241.Repository
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Subject>()
-                .HasMany(x=>x.Grades).WithOne(x=>x.Subject).HasForeignKey(x => x.SubjectId).OnDelete(DeleteBehavior.Cascade);
+                .HasMany(x=>x.Grades).WithOne(x=>x.Subject)
+                .HasForeignKey(x => x.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Subject>().HasData(new Subject[]
             {

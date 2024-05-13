@@ -112,7 +112,7 @@ namespace MS0XLT_HFT_202341.WpfClient
                 {
                     Students.Add(new Student()
                     {
-                        StudentId = SelectedStudent.StudentId,
+                       
                         StudentName = SelectedStudent.StudentName,
                         Semester = SelectedStudent.Semester
 
