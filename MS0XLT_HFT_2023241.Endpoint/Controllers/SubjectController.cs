@@ -47,7 +47,7 @@ namespace MS0XLT_HFT_2023241.Endpoint.Controllers
         }
 
         // PUT api/<SubjectController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Update([FromBody] Subject value)
         {
             this.logic.Update(value);

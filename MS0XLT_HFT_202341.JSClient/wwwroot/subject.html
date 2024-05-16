@@ -6,28 +6,29 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <h1> Student catalog</h1>
+    <h1> Subject catalog</h1>
     <div class="menu">
-        <a href="statistic.html">statistics</a> <a href="#">students</a> <a href="grade.html">grades</a> <a href="subject.html">subjects</a>
+        <a href="statistic.html">statistics</a> <a href="index.html">students</a> <a href="grade.html">grades</a> <a href="#">subjects</a>
     </div>
+    
     <div id="formdiv">
-        <input type="text" id="studentname" />
-        <input type="number" id="semester" />
+        <input type="text" id="subjectname" placeholder="subject name"/>
+        <input type="number" id="credit" placeholder="credit"/>
         <button id="add_btn" onclick="create()">Add item</button>
     </div>
 
     <div id="updateformdiv">
-        <input type="text" id="studentnametoupdate" />
-        <input type="number" id="semestertoupdate" />
+        <input type="text" id="subjectnametoupdate" />
+        <input type="number" id="credittoupdate" />
         <button id="add_btn" onclick="update()">Update item</button>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>ID </th>
-                <th>Name </th>
-                <th>Semester </th>
+                <th>Subject ID </th>
+                <th>Subject Name </th>
+                <th>Credit </th>
                 <th>Action </th>
             </tr>
         </thead>
@@ -36,6 +37,6 @@
     </table>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
-    <script src="script.js"></script>
+    <script src="subject_script.js"></script>
 </body>
 </html>

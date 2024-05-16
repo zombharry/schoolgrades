@@ -44,9 +44,7 @@ namespace MS0XLT_HFT_202341.WpfClient
 
         public ICommand UpdateStudentCommand { get; set; }
 
-        public ICommand GetCreditsCommand { get; set; }
-
-        public ICommand GetFailedStudentsCommand { get; set; }
+     
 
 
 
@@ -60,6 +58,7 @@ namespace MS0XLT_HFT_202341.WpfClient
             {
                 SetProperty(ref selectedStudent, value);
                 (DeleteStudentCommand as RelayCommand).NotifyCanExecuteChanged();
+                (UpdateStudentCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -79,9 +78,8 @@ namespace MS0XLT_HFT_202341.WpfClient
             if (!IsInDesignMode)
             {
                 Students = new RestCollection<Student>("http://localhost:48224/", "student", "hub");
-                //Statistics = new RestCollection<Object>("http://localhost:48224/", "stat/AllAvarageGrade/");
-                //Subjects = new RestCollection<Subject>("http://localhost:48224", "subject");
-                //Grades = new RestCollection<Grade>("http://localhost:48224", "grade");
+                //Subjects = new RestCollection<Subject>("http://localhost:48224/", "subject");
+                //Grades = new RestCollection<Grade>("http://localhost:48224/", "grade");
 
 
 
@@ -103,7 +101,7 @@ namespace MS0XLT_HFT_202341.WpfClient
                     () => { Students.Delete(selectedStudent.StudentId); },
                     () =>
                     {
-                        return SelectedStudent != null;
+                        return (SelectedStudent != null) && (SelectedStudent.StudentId!=0);
                     });
 
                 SelectedStudent = new Student();

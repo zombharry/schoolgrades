@@ -40,13 +40,12 @@
 			</ListBox>
 			<StackPanel Grid.Column="1">
 				<Label Content="Id"/>
-				<TextBox Text="{Binding SelectedStudent.StudentId}" Padding="6" Margin="0,0,0,3" />
+				<Label Content="{Binding SelectedStudent.StudentId}" Padding="6" Margin="0,0,0,3" />
 				<Label Content="Name"/>
 				<TextBox Text="{Binding SelectedStudent.StudentName}" Padding="6" Margin="0,0,0,3" />
 				<Label Content="Semester"/>
 				<TextBox Text="{Binding SelectedStudent.Semester}" Padding="6" Margin="0,0,0,3" />
-				<Label Content="Kreditek"/>
-				<Label Content="Bukott"/>
+
 				<Button Content="Create Student" Command="{Binding CreateStudentCommand}" Margin="6" Padding="5" />
 				<Button Content="Delete Student" Command="{Binding DeleteStudentCommand}" Margin="6" Padding="5" />
 				<Button Content="Update Student" Command="{Binding UpdateStudentCommand}" Margin="6" Padding="5" />

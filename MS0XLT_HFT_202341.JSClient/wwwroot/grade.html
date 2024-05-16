@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h1> Student catalog</h1>
+    <div class="menu">
+        <a href="statistic.html">statistics</a> <a href="index.html">students</a> <a href="#">grades</a> <a href="subject.html">subjects</a>
+    </div>
+    <div id="formdiv">
+        <input type="number" id="studentid" placeholder="student id" />
+        <input type="number" id="subjectid" placeholder="subject id" />
+        <input type="number" id="grade_val" min="1" max="5"  placeholder="grade value"/>
+        <button id="add_btn" onclick="create()">Add item</button>
+    </div>
+
+    <div id="updateformdiv">
+        <input type="number" id="studentidtoupdate" />
+        <input type="number" id="subjectidtoupdate" />
+        <input type="number" id="gradevaluetoupdate" />
+        <input type="date" id="datetoupdate" />
+        <button id="add_btn" onclick="update()">Update item</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID </th>
+                <th>Student Id </th>
+                <th>Subject Id </th>
+                <th>Grade Value </th>
+                <th>Date </th>
+                <th>Action </th>
+            </tr>
+        </thead>
+        <tbody id="resultArea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="grade_script.js"></script>
+</body>
+</html>

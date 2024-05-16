@@ -15,11 +15,20 @@
 			<RowDefinition Height="1*"/>
 			<RowDefinition Height="8*"/>
 		</Grid.RowDefinitions>
-		<StackPanel Grid.Row="0" Orientation="Horizontal">
-			<Button Content="Subjects"  Margin="10" Padding="5" />
-			<Button Content="Grades"  Margin="10" Padding="5" />
-			<Button Content="Statistics"  Margin="10" Padding="5" />
-		</StackPanel>
+
+		<Grid>
+
+			<Grid.ColumnDefinitions >
+				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
+			<Label Content="Students" Grid.Column="0"/>
+			<Label Content="Avarage Grade"  Grid.Column="1"/>
+			<Label Content="Credits" Grid.Column="2"/>
+			<Label Content="Failed students" Grid.Column="3"/>
+		</Grid>
 		<Grid Grid.Row="1">
 
 			<Grid.ColumnDefinitions >
@@ -60,9 +69,19 @@
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 			</ListBox>
-			<StackPanel Grid.Column="3">
-				
-			</StackPanel>
+
+			<ListBox Grid.Column="3" ItemsSource="{Binding FailedStudents}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<Label Content="{Binding StudentId}"/>
+							<Label Content="{Binding StudentName}"/>
+							<Label Content="{Binding Semester}"/>
+						</StackPanel>
+
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
 		</Grid>
 
 	</Grid>

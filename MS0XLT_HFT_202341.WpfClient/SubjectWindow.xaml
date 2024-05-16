@@ -16,16 +16,18 @@
 		<RowDefinition Height="8*"/>
 	</Grid.RowDefinitions>
 	<StackPanel Grid.Row="0" Orientation="Horizontal">
-		<Button Content="Subjects"  Margin="10" Padding="5" />
+		<!--<Button Content="Subjects"  Margin="10" Padding="5" />
 		<Button Content="Grades"  Margin="10" Padding="5" />
-		<Button Content="Statistics"  Margin="10" Padding="5" />
-	</StackPanel>
+		<Button Content="Statistics"  Margin="10" Padding="5" />-->
+			<Label Content="Subject id / Subject name / Credit Value "/>
+		</StackPanel>
 	<Grid Grid.Row="1">
 		
 		<Grid.ColumnDefinitions >
 			<ColumnDefinition Width="7*"/>
 			<ColumnDefinition Width="3*"/>
 		</Grid.ColumnDefinitions>
+		
 			<ListBox ItemsSource="{Binding Subjects}" SelectedItem="{Binding SelectedSubject}">
 			<ListBox.ItemTemplate>
 				<DataTemplate>
@@ -40,7 +42,7 @@
 		</ListBox>
 		<StackPanel Grid.Column="1">
 			<Label Content="Id"/>
-			<TextBox Text="{Binding SelectedSubject.SubjectId}" Padding="6" Margin="0,0,0,3" />
+			<Label Content="{Binding SelectedSubject.SubjectId}" Padding="6" Margin="0,0,0,3" />
 			<Label Content="Name"/>
 			<TextBox Text="{Binding SelectedSubject.SubjectName}" Padding="6" Margin="0,0,0,3" />
 			<Label Content="Credits"/>

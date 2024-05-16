@@ -23,7 +23,7 @@ namespace MS0XLT_HFT_202341.WpfClient
             get { return errorMessage; }
             set { SetProperty(ref errorMessage, value); }
         }
-        //public RestCollection<Student> Students { get; set; }
+        
 
         private RestService rest;
 
@@ -32,12 +32,14 @@ namespace MS0XLT_HFT_202341.WpfClient
                 return rest.Get<StudentInfo>("stat/StudentsCredits/");
             } }
 
+        public List<Student> FailedStudents { get { return rest.Get<Student>("stat/failedStudents/"); } }
+
         //public List<object> combinedList
         //{
         //    get {
         //        List<object> transformedItems = (List<object>)AvgGrades.Select(item =>
         //        {
-                    
+
         //            return new StudentInfo
         //            {
         //                StudentId =((dynamic) item).StudentId,
@@ -71,6 +73,8 @@ namespace MS0XLT_HFT_202341.WpfClient
                 Students = new RestCollection<Student>("http://localhost:48224/", "student");
 
                 rest = new RestService("http://localhost:48224/");
+
+               // FailedStudents = new RestCollection<Student>("http://localhost:48224/stat/", "failedStudents", "hub");
 
             }
         }

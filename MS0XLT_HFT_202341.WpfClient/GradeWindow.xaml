@@ -16,9 +16,7 @@
 			<RowDefinition Height="8*"/>
 		</Grid.RowDefinitions>
 		<StackPanel Grid.Row="0" Orientation="Horizontal">
-			<Button Content="Subjects"  Margin="10" Padding="5" />
-			<Button Content="Grades"  Margin="10" Padding="5" />
-			<Button Content="Statistics"  Margin="10" Padding="5" />
+			<Label Content="Student id / Subject id / Grade Value / Date"/>
 		</StackPanel>
 		<Grid Grid.Row="1">
 
@@ -40,19 +38,19 @@
 				</ListBox.ItemTemplate>
 			</ListBox>
 			<StackPanel Grid.Column="1">
-				<Label Content="Id"/>
+				<Label Content="Student Id"/>
 				<TextBox Text="{Binding SelectedGrade.StudentId}" Padding="6" Margin="0,0,0,3" />
 				<Label Content="SubjectId"/>
 				<TextBox Text="{Binding SelectedGrade.SubjectId}" Padding="6" Margin="0,0,0,3" />
 				<Label Content="Grade Value"/>
 				<TextBox Text="{Binding SelectedGrade.GradeValue}" Padding="6" Margin="0,0,0,3" />
 
-				<Label Content="Semester"/>
-				<DatePicker Text="{Binding SelectedGrade.Date}" Padding="6" Margin="0,0,0,3" />
+				<Label Content="Date"/>
+				<DatePicker  SelectedDate="{Binding SelectedDate}"  Padding="6" Margin="0,0,0,3"  Text="{Binding SelectedGrade.Date}" />
 
-				<Button Content="Create Student" Command="{Binding CreateGradeCommand}" Margin="6" Padding="5" />
-				<Button Content="Delete Student" Command="{Binding DeleteGradeCommand}" Margin="6" Padding="5" />
-				<Button Content="Update Student" Command="{Binding UpdateGradeCommand}" Margin="6" Padding="5" />
+				<Button Content="Create Grade" Command="{Binding CreateGradeCommand}" Margin="6" Padding="5" />
+				<Button Content="Delete Grade" Command="{Binding DeleteGradeCommand}" Margin="6" Padding="5" />
+				<Button Content="Update Grade" Command="{Binding UpdateGradeCommand}" Margin="6" Padding="5" />
 			</StackPanel>
 		</Grid>
 

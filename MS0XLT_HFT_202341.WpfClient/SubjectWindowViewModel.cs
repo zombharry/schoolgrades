@@ -78,7 +78,7 @@ namespace MS0XLT_HFT_202341.WpfClient
                     () => { Subjects.Delete(SelectedSubject.SubjectId); },
                     () =>
                     {
-                        return SelectedSubject != null;
+                        return (SelectedSubject != null) && (SelectedSubject.SubjectId !=0);
                     });
 
                 CreateSubjectCommand = new RelayCommand(() =>

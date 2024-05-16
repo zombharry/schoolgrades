@@ -21,6 +21,7 @@ namespace MS0XLT_HFT_202341.WpfClient
             get { return errorMessage; }
             set { SetProperty(ref errorMessage, value); }
         }
+
         public RestCollection<Grade> Grades { get; set; }
 
         private Grade selectedGrade;
@@ -31,8 +32,23 @@ namespace MS0XLT_HFT_202341.WpfClient
             get { return selectedGrade; }
             set
             {
+                
                 SetProperty(ref selectedGrade, value);
                 (DeleteGradeCommand as RelayCommand).NotifyCanExecuteChanged();
+            }
+        }
+
+        private DateTime _selectedDate;
+        public DateTime SelectedDate
+        {
+            get { return _selectedDate; }
+            set
+            {
+                if (_selectedDate != value)
+                {
+                    _selectedDate = value;
+                    OnPropertyChanged(nameof(SelectedDate));
+                }
             }
         }
 
@@ -60,11 +76,33 @@ namespace MS0XLT_HFT_202341.WpfClient
 
                
 
+                
+                DeleteGradeCommand = new RelayCommand(
+                    () => { Grades.Delete(SelectedGrade.GradeId); },
+                    () =>
+                    {
+                        return (SelectedGrade != null) && (SelectedGrade.GradeId != 0);
+                    });
+
+                SelectedGrade = new Grade();
+                CreateGradeCommand = new RelayCommand(() =>
+                {
+                    Grades.Add(new Grade()
+                    {
+                        StudentId = SelectedGrade.StudentId,
+                        GradeValue = SelectedGrade.GradeValue,
+
+                        Date = DateTime.Today
+
+                    });
+                });
                 UpdateGradeCommand = new RelayCommand(
                     () =>
                     {
                         try
                         {
+                            SelectedGrade.Date = SelectedDate;
+
                             Grades.Update(SelectedGrade);
                         }
                         catch (ArgumentException ex)
@@ -74,26 +112,6 @@ namespace MS0XLT_HFT_202341.WpfClient
                         }
                     });
 
-                DeleteGradeCommand = new RelayCommand(
-                    () => { Grades.Delete(SelectedGrade.SubjectId); },
-                    () =>
-                    {
-                        return SelectedGrade != null;
-                    });
-
-                SelectedGrade = new Grade();
-                CreateGradeCommand = new RelayCommand(() =>
-                {
-                    Grades.Add(new Grade()
-                    {
-                        SubjectId = SelectedGrade.SubjectId,
-                        StudentId = SelectedGrade.StudentId,
-                        GradeValue = SelectedGrade.GradeValue,
-
-                        Date = DateTime.Now
-
-                    });
-                });
             }
         }
     }
